@@ -5,19 +5,12 @@ public class Door {
     private boolean isOpen;
     private boolean isClosed;
     private boolean isLocked;
-    public static HashMap<String, Double> materials = new HashMap<>();
-    private String[] doorMaterials = {"Wood", "Metal", "Glass", "Stone"};
     public static String[] doorColors = {"Oak", "Black", "Silver", "Transparent"};
     private String doorMaterial;
     private String doorColor;
-    private int depth;
-    private int height;
-    private int width;
-    private int density;
-
-    private void initiateMaterials(){
-        materials.put("Wood",1212.0);
-    }
+    private double depth;
+    private double height;
+    private double width;
 
     public boolean isOpen() {
         return isOpen;
@@ -27,8 +20,7 @@ public class Door {
         isOpen = open;
     }
 
-    public Door(boolean isOpen, boolean isClosed, boolean isLocked, String doorMaterial, String doorColor, int depth, int height, int width) {
-        initiateMaterials();
+    public Door(boolean isOpen, boolean isClosed, boolean isLocked, String doorMaterial, String doorColor, double depth, double height, double width) {
         this.isOpen = isOpen;
         this.isClosed = isClosed;
         this.isLocked = isLocked;
@@ -37,7 +29,6 @@ public class Door {
         this.depth = depth;
         this.height = height;
         this.width = width;
-        this.density = 
     }
 
     public boolean isClosed() {
@@ -56,13 +47,6 @@ public class Door {
         isLocked = locked;
     }
 
-    public String[] getDoorMaterials() {
-        return doorMaterials;
-    }
-
-    public void setDoorMaterials(String[] doorMaterials) {
-        this.doorMaterials = doorMaterials;
-    }
 
     public String[] getDoorColor() {
         return doorColors;
@@ -72,7 +56,7 @@ public class Door {
         this.doorColors = doorColor;
     }
 
-    public int getDepth() {
+    public double getDepth() {
         return depth;
     }
 
@@ -80,7 +64,7 @@ public class Door {
         this.depth = depth;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -88,7 +72,7 @@ public class Door {
         this.height = height;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
@@ -97,11 +81,11 @@ public class Door {
     }
 
     public double getWeight(){
-        return height*width*depth*getDoorMaterials().getDoorDensity();
+        return height*width*depth*Materials.getDensity();
     }
 
-    public double getDoorDensity(){
-        return this.density;
+    public static HashMap<String, Double> getMaterialsDensities(){
+        return materialsDensities;
     }
 
 }
