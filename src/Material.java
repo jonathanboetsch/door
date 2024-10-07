@@ -1,9 +1,9 @@
-public class Materials {
+public class Material {
 
     private String name;
     private double density;
 
-    public Materials(String name, double density) {
+    public Material(String name, double density) {
         this.name = name;
         this.density = density;
     }

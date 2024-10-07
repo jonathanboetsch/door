@@ -6,7 +6,7 @@ public class Door {
     private boolean isClosed;
     private boolean isLocked;
     public static String[] doorColors = {"Oak", "Black", "Silver", "Transparent"};
-    private String doorMaterial;
+    private Material doorMaterial;
     private String doorColor;
     private double depth;
     private double height;
@@ -20,14 +20,14 @@ public class Door {
         isOpen = open;
     }
 
-    public Door(boolean isOpen, boolean isClosed, boolean isLocked, String doorMaterial, String doorColor, double depth, double height, double width) {
+    public Door(boolean isOpen, boolean isClosed, boolean isLocked, Material doorMaterial, String doorColor, double depth, double height, double width) {
         this.isOpen = isOpen;
         this.isClosed = isClosed;
         this.isLocked = isLocked;
         this.doorMaterial = doorMaterial;
         this.doorColor = doorColor;
         this.depth = depth;
-        this.height = height;
+        this.height = getWeight();
         this.width = width;
     }
 
@@ -81,12 +81,9 @@ public class Door {
     }
 
     public double getWeight(){
-        return height*width*depth*Materials.getDensity();
+        return height*width*depth*doorMaterial.getDensity();
     }
 
-    public static HashMap<String, Double> getMaterialsDensities(){
-        return materialsDensities;
-    }
 
 }
 
